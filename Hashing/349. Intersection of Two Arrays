@@ -1,0 +1,25 @@
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> map = new HashMap<>();
+        Set<Integer> set =new HashSet<>();
+
+        for(int i : nums1){
+            map.put(i, map.getOrDefault(i,0)+1);
+        }
+
+        for(int c : nums2){
+            if(map.containsKey(c)){
+                map.put(c, 0);
+                set.add(c);
+            }
+        }
+        int[] arr = new int[set.size()]; // Array must be large enough
+        int index = 0;
+
+        for (Integer value : set) {
+            arr[index++] = value; // Adds each set element to the array
+        }
+        return arr;
+               
+    }
+}
